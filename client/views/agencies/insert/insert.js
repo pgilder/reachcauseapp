@@ -1,15 +1,15 @@
 var pageSession = new ReactiveDict();
 
 Template.AgenciesInsert.onCreated(function() {
-	
+
 });
 
 Template.AgenciesInsert.onDestroyed(function() {
-	
+
 });
 
 Template.AgenciesInsert.onRendered(function() {
-	
+
 	Meteor.defer(function() {
 		globalOnRendered();
 		$("input[autofocus]").focus();
@@ -17,23 +17,23 @@ Template.AgenciesInsert.onRendered(function() {
 });
 
 Template.AgenciesInsert.events({
-	
+
 });
 
 Template.AgenciesInsert.helpers({
-	
+
 });
 
 Template.AgenciesInsertForm.onCreated(function() {
-	
+
 });
 
 Template.AgenciesInsertForm.onDestroyed(function() {
-	
+
 });
 
 Template.AgenciesInsertForm.onRendered(function() {
-	
+
 
 	pageSession.set("agenciesInsertFormInfoMessage", "");
 	pageSession.set("agenciesInsertFormErrorMessage", "");
@@ -105,7 +105,7 @@ Template.AgenciesInsertForm.events({
 
 			},
 			function(values) {
-				
+
 
 				Meteor.call("agencyInsert", values, function(e, r) { if(e) errorAction(e); else submitAction(r); });
 			}
@@ -116,7 +116,7 @@ Template.AgenciesInsertForm.events({
 	"click #form-cancel-button": function(e, t) {
 		e.preventDefault();
 
-		
+
 
 		Router.go("agencies", mergeObjects(Router.currentRouteParams(), {}));
 	},
@@ -131,7 +131,7 @@ Template.AgenciesInsertForm.events({
 		/*BACK_REDIRECT*/
 	}
 
-	
+
 });
 
 Template.AgenciesInsertForm.helpers({
@@ -141,5 +141,5 @@ Template.AgenciesInsertForm.helpers({
 	"errorMessage": function() {
 		return pageSession.get("agenciesInsertFormErrorMessage");
 	}
-	
+
 });

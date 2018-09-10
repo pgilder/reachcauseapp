@@ -319,11 +319,15 @@
 											</div>
 											<!--end module-->
 											<div class="bar__module">
-													<a class="btn btn--sm type--uppercase" href="{{pathFor 'login'}}">
-															<span class="btn__text">
-																	Login
-															</span>
-													</a>
+                        {{#if currentUser }}
+
+                        {{else}}
+                        <a class="btn btn--sm type--uppercase {{menuItemClass 'login'}}" href="{{pathFor 'login'}}">
+                            <span class="btn__text">
+                                Login
+                            </span>
+                        </a>
+                        {{/if}}
 													<a class="btn btn--sm btn--primary type--uppercase" href="{{pathFor 'donate'}}">
 															<span class="btn__text">
 																	Donate
