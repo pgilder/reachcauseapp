@@ -1,0 +1,120 @@
+label.bg-insert-1 {
+  background-image: url(img/nonprofit-1.jpg) !important;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.form-group.input-radio--innerlabel input:checked + label + .bg-insert-1  {
+  border-color: #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  z-index: 99999;
+  background-image: url(img/nonprofit-1.jpg) !important;
+  /* opacity: .6; */
+  background-blend-mode: overlay;
+}
+
+label.bg-insert-2 {
+  background-image: url(img/nonprofit-2.jpg) !important;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.form-group.input-radio--innerlabel input:checked + label + .bg-insert-2  {
+  border-color: #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  z-index: 99999;
+  background-image: url(img/nonprofit-2.jpg) !important;
+  /* opacity: .6; */
+  background-blend-mode: overlay;
+}
+
+label.bg-insert-3 {
+  background-image: url(img/nonprofit-3.jpg) !important;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.form-group.input-radio--innerlabel input:checked + label + .bg-insert-3  {
+  border-color: #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  z-index: 99999;
+  background-image: url(img/nonprofit-3.jpg) !important;
+  /* opacity: .6; */
+  background-blend-mode: overlay;
+}
+
+label.bg-insert-4 {
+  background-image: url(img/nonprofit-4.jpg) !important;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.form-group.input-radio--innerlabel input:checked + label + .bg-insert-4  {
+  border-color: #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  z-index: 99999;
+  background-image: url(img/nonprofit-4.jpg) !important;
+  /* opacity: .6; */
+  background-blend-mode: overlay;
+}
+
+label.bg-insert-5 {
+  background-image: url(img/nonprofit-5.jpg) !important;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.form-group.input-radio--innerlabel input:checked + label + .bg-insert-5  {
+  border-color: #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  z-index: 99999;
+  background-image: url(img/nonprofit-5.jpg) !important;
+  /* opacity: .6; */
+  background-blend-mode: overlay;
+}
+
+label.bg-insert-6 {
+  background-image: url(img/nonprofit-6.jpg) !important;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.form-group.input-radio--innerlabel input:checked + label + .bg-insert-6  {
+  border-color: #4a90e2;
+  background: #4a90e2;
+  color: #fff;
+  z-index: 99999;
+  background-image: url(img/nonprofit-6.jpg) !important;
+  /* opacity: .6; */
+  background-blend-mode: overlay;
+}
+
+
+.form-group.input-radio--innerlabel label{
+    transition: all .3s ease;
+    height: 6.785714em;
+    line-height: 2.50714286em;
+    padding: 0 0.92857143em;
+    border: 1px solid #ececec;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    min-width: 155px;
+    color: #fff;
+    padding-top: 28px;
+    background-size: cover;
+  }
+
+  .form-group.input-radio--innerlabel input:checked + label {
+      border-color: #4a90e2;
+      background: #4a90e2;
+      color: #fff;
+      background-size: cover;
+      background-blend-mode: overlay;
+  }

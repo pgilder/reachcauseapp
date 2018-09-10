@@ -132,10 +132,12 @@
 </template>
 
 <template name="PrivateLayout">
+	<a id="start"></a>
 	<div id="content" class="sticky-wrapper">
 		{{> nav}}
 		{{> yield}}
 	</div>
+		{{> footer}}
 	<div id="footer" class="sticky-footer">
 		<div class="footer-container container">
 			<p class="text-muted">
@@ -197,7 +199,7 @@
 							</div>
 							<div class="col-md-6 text-right text-center-xs">
 									<span class="type--fine-print">&copy;
-											<span class="update-year"></span> RatioChecker.com</span>
+											<span class="update-year"></span> ReachCause.com</span>
 									<a class="type--fine-print" href="#">Privacy Policy</a>
 									<a class="type--fine-print" href="#">Github</a>
 							</div>
