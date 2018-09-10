@@ -37,3 +37,4 @@ momentjs:moment
 rajit:bootstrap3-datepicker
 nilsdannemann:pdfmake
 underscore
+babel-runtime
