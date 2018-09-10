@@ -1,0 +1,23 @@
+.bg-why {
+  background-image: url(img/education-5.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bg-why-2 {
+  background-image: url(img/education-4.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bg-why-3 {
+  background-image: url(img/inner-7.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bg-btm-why-cta {
+  background-image: url(img/nonprofit-1.jpg);
+  background-size: cover;
+  background-position: bottom;
+}

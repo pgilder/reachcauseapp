@@ -1,3 +1,15 @@
+
+Router.route('/home_private/:_id/', {
+	action: function () {
+		this.render('HomePrivate', {
+			data: function () {
+				return Customers.findOne({_id: this.params._id});
+			}
+		});
+	}
+});
+
+
 Router.configure({
 	templateNameConverter: "upperCamelCase",
 	routeControllerNameConverter: "upperCamelCase",
@@ -9,6 +21,9 @@ Router.configure({
 Router.publicRoutes = [
 	"login",
 	"register",
+	"our-work",
+	"why",
+  "about",
 	"verify_email",
 	"forgot_password",
 	"reset_password"
@@ -24,11 +39,17 @@ Router.privateRoutes = [
 	"user_settings",
 	"user_settings.profile",
 	"user_settings.change_pass",
-	"logout"
+	"logout",
+	"agencies",
+	"agencies.details",
+	"agencies.insert",
+	"agencies.update",
+	"editor"
 ];
 
 Router.freeRoutes = [
-	"home_public"
+	"home_public",
+	"donate"
 ];
 
 Router.roleMap = [
@@ -39,14 +60,19 @@ Router.roleMap = [
 	{ route: "admin.users.edit",	roles: ["admin"] },
 	{ route: "user_settings",	roles: ["user","admin"] },
 	{ route: "user_settings.profile",	roles: ["user","admin"] },
-	{ route: "user_settings.change_pass",	roles: ["user","admin"] }
+	{ route: "user_settings.change_pass",	roles: ["user","admin"] },
+	{ route: "agencies",	roles: ["user","admin"] },
+	{ route: "agencies.details",	roles: ["user","admin"] },
+	{ route: "agencies.insert",	roles: ["user","admin"] },
+	{ route: "agencies.update",	roles: ["user","admin"] },
+	{ route: "editor",	roles: ["user","admin"] }
 ];
 
 Router.defaultFreeRoute = "home_public";
 Router.defaultPublicRoute = "home_public";
-Router.defaultPrivateRoute = "home_private";
+Router.defaultPrivateRoute = "agencies";
 
-Router.waitOn(function() { 
+Router.waitOn(function() {
 	Meteor.subscribe("current_user_data");
 });
 
@@ -66,10 +92,15 @@ Router.onBeforeAction(Router.ensureLogged, {only: Router.privateRoutes});
 Router.onBeforeAction(Router.ensureGranted, {only: Router.freeRoutes}); // yes, route from free zone can be restricted to specific set of user roles
 
 Router.map(function () {
-	
+
 	this.route("/", {name: "home_public", title: "", controller: "HomePublicController"});
 	this.route("/login", {name: "login", title: "", controller: "LoginController"});
 	this.route("/register", {name: "register", title: "", controller: "RegisterController"});
+	this.route("/donate", {name: "donate", title: "", controller: "DonateController"});
+	this.route("/about", {name: "about", title: ""});
+	this.route("/our-work", {name: "ourWork", title: ""});
+	this.route("/why", {name: "why", title: ""});
+	this.route("/editor", {name: "editor", title: ""});
 	this.route("/verify_email/:verifyEmailToken", {name: "verify_email", title: "", controller: "VerifyEmailController"});
 	this.route("/forgot_password", {name: "forgot_password", title: "", controller: "ForgotPasswordController"});
 	this.route("/reset_password/:resetPasswordToken", {name: "reset_password", title: "", controller: "ResetPasswordController"});
@@ -83,4 +114,8 @@ Router.map(function () {
 	this.route("/user_settings/profile", {name: "user_settings.profile", title: "", controller: "UserSettingsProfileController"});
 	this.route("/user_settings/change_pass", {name: "user_settings.change_pass", title: "", controller: "UserSettingsChangePassController"});
 	this.route("/logout", {name: "logout", title: "", controller: "LogoutController"});
+	this.route("/agencies", {name: "agencies", title: "", controller: "AgenciesController"});
+	this.route("/agencies/details/:agencyId", {name: "agencies.details", title: "", controller: "AgenciesDetailsController"});
+	this.route("/agencies/insert", {name: "agencies.insert", title: "", controller: "AgenciesInsertController"});
+	this.route("/agencies/update/:agencyId", {name: "agencies.update", title: "", controller: "AgenciesUpdateController"});
 });

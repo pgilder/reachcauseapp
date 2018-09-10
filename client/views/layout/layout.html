@@ -1,9 +1,100 @@
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes" />	<title>
-		Chuch Visit
-	</title>
+	<meta charset="utf-8">
+	<title>Reach Cause | Nonprofit Building Platform</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Site Description Here">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/jquery.steps.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-config" content="/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.12.17/grapes.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.12.17/css/grapes.min.css">
+
+	 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	 <script>
+			$(document).ready(function() {
+				$('#set-ratios').change(function() {
+					 var ratio = $('#set-ratios').val();
+					 var ratios = ratio.split(':');
+
+					 $('#a1').val(ratios[0]);
+					 $('#a2').val(ratios[1]);
+
+					 $('#resize').trigger('click');
+
+					 $('#set-ratios').val('');
+				});
+
+				$('#set-orientation').change(function() {
+					 var orientation = $('#set-orientation').val();
+					 var v1= $('#a1').val();
+					 var v2= $('#a2').val();
+
+
+					 if( orientation === 'portrait' ) {
+							if( v1 < v2 ) {
+								 $('#a1').val(v1);
+								 $('#a2').val(v2);
+							} else {
+								 $('#a1').val(v2);
+								 $('#a2').val(v1);
+							}
+					 } else if( orientation === 'landscape' ) {
+							if( v1 < v2 ) {
+								 $('#a1').val(v2);
+								 $('#a2').val(v1);
+							} else {
+								 $('#a1').val(v1);
+								 $('#a2').val(v2);
+							}
+					 }
+					 $('#resize').trigger('click');
+					 $('#set-orientation').val('');
+				});
+
+
+
+				 var container = $('#container');
+				 var pic = $('#pic');
+				 var text = $('#text');
+				 container.resizable({aspectRatio: true});
+				 $('#resize').click(function() {
+						container.resizable("destroy");
+						container.css('width', 'auto');
+						container.css('height', 'auto');
+						var a1 = $('#a1').val();
+						var a2 = $('#a2').val();
+						var ratio = (a2 / a1) * 100;
+						var width = $('#size').val();
+
+						$('#pic').css('padding-top', ratio + '%' );
+						container.css('width', width );
+						container.resizable({aspectRatio: true});
+				 });
+				 setInterval( function() {
+					 text.html( container.width() + ' x ' + container.height() );
+				 }, 150);
+			});
+	 </script>
+
 </head>
 <template name="layout">
 	{{#if isPrivateZone}}
@@ -11,34 +102,12 @@
 	{{else}}
 		{{> PublicLayout publicData}}
 	{{/if}}
+	<!-- {{> footer}} -->
 </template>
 
 <template name="FreeLayout">
 	<div id="content" class="sticky-wrapper">
-		<div id="navbar" class="navbar navbar-fixed-top navbar-default" role="navigation">
-			<div class="navbar-container container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">
-							Toggle navigation
-						</span>
-						<span class="icon-bar">
-						</span>
-						<span class="icon-bar">
-						</span>
-						<span class="icon-bar">
-						</span>
-					</button>
-					<a class="navbar-brand" href="/">
-						Chuch Visit
-					</a>
-				</div>
-				<div id="menu" class="collapse navbar-collapse">
-				</div>
-			</div>
-		</div>
-		<div class="navbar-spacer">
-		</div>
+		{{> nav}}
 		{{> yield}}
 	</div>
 	<div id="footer" class="sticky-footer">
@@ -50,32 +119,8 @@
 </template>
 
 <template name="PublicLayout">
-	<div id="content" class="sticky-wrapper">
-		<div id="navbar" class="navbar navbar-fixed-top navbar-default" role="navigation">
-			<div class="navbar-container container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">
-							Toggle navigation
-						</span>
-						<span class="icon-bar">
-						</span>
-						<span class="icon-bar">
-						</span>
-						<span class="icon-bar">
-						</span>
-					</button>
-					<a class="navbar-brand" href="/">
-						Chuch Visit
-					</a>
-				</div>
-				<div id="menu" class="collapse navbar-collapse">
-					{{> PublicLayoutLeftMenu}}{{> PublicLayoutRightMenu}}
-				</div>
-			</div>
-		</div>
-		<div class="navbar-spacer">
-		</div>
+<div id="content" class="sticky-wrapper">
+	{{> nav}}
 		{{> yield}}
 	</div>
 	<div id="footer" class="sticky-footer">
@@ -84,66 +129,11 @@
 			</p>
 		</div>
 	</div>
-</template>
-
-<template name="PublicLayoutLeftMenu">
-	<ul id="menu-items" class="nav navbar-nav">
-		<li id="menu-item-simple" class="{{menuItemClass 'home_public'}}">
-			<a href="{{pathFor 'home_public'}}">
-				<span class="item-title">
-					Home
-				</span>
-			</a>
-		</li>
-	</ul>
-</template>
-
-<template name="PublicLayoutRightMenu">
-	<ul id="menu-items" class="nav navbar-nav navbar-right">
-		<li id="menu-item-simple" class="{{menuItemClass 'register'}}">
-			<a href="{{pathFor 'register'}}">
-				<span class="item-title">
-					Register
-				</span>
-			</a>
-		</li>
-		<li id="menu-item-simple" class="{{menuItemClass 'login'}}">
-			<a href="{{pathFor 'login'}}">
-				<span class="item-title">
-					Login
-				</span>
-			</a>
-		</li>
-	</ul>
 </template>
 
 <template name="PrivateLayout">
 	<div id="content" class="sticky-wrapper">
-		<div id="navbar" class="navbar navbar-fixed-top navbar-default" role="navigation">
-			<div class="navbar-container container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">
-							Toggle navigation
-						</span>
-						<span class="icon-bar">
-						</span>
-						<span class="icon-bar">
-						</span>
-						<span class="icon-bar">
-						</span>
-					</button>
-					<a class="navbar-brand" href="/">
-						Chuch Visit
-					</a>
-				</div>
-				<div id="menu" class="collapse navbar-collapse">
-					{{> PrivateLayoutLeftMenu}}{{> PrivateLayoutRightMenu}}
-				</div>
-			</div>
-		</div>
-		<div class="navbar-spacer">
-		</div>
+		{{> nav}}
 		{{> yield}}
 	</div>
 	<div id="footer" class="sticky-footer">
@@ -154,58 +144,85 @@
 	</div>
 </template>
 
-<template name="PrivateLayoutLeftMenu">
-	<ul id="menu-items" class="nav navbar-nav">
-		<li id="menu-item-simple" class="{{menuItemClass 'home_private'}}">
-			<a href="{{pathFor 'home_private'}}">
-				<span class="fa fa-home">
-				</span>
-				<span class="item-title">
-					&nbsp;Home
-				</span>
+<template name="footer">
+	<footer class="footer-3 text-center-xs space--xs ">
+			<div class="container">
+					<div class="row">
+							<div class="col-md-6">
+									<img alt="Image" class="logo" src="img/logo-dark.png" />
+									<ul class="list-inline list--hover">
+											<li class="list-inline-item">
+													<a href="#checker">
+															<span class="type--fine-print">Get Started</span>
+													</a>
+											</li>
+											<li class="list-inline-item">
+													<a href="#">
+															<span class="type--fine-print">help@ratiochecker.com</span>
+													</a>
+											</li>
+									</ul>
+							</div>
+							<div class="col-md-6 text-right text-center-xs">
+									<ul class="social-list list-inline list--hover">
+											<li class="list-inline-item">
+													<a href="#">
+															<i class="socicon socicon-google icon icon--xs"></i>
+													</a>
+											</li>
+											<li class="list-inline-item">
+													<a href="#">
+															<i class="socicon socicon-twitter icon icon--xs"></i>
+													</a>
+											</li>
+											<li class="list-inline-item">
+													<a href="#">
+															<i class="socicon socicon-facebook icon icon--xs"></i>
+													</a>
+											</li>
+											<li class="list-inline-item">
+													<a href="#">
+															<i class="socicon socicon-instagram icon icon--xs"></i>
+													</a>
+											</li>
+									</ul>
+							</div>
+					</div>
+					<!--end of row-->
+					<div class="row">
+							<div class="col-md-6">
+									<p class="type--fine-print">
+											A Open Source Project
+									</p>
+							</div>
+							<div class="col-md-6 text-right text-center-xs">
+									<span class="type--fine-print">&copy;
+											<span class="update-year"></span> RatioChecker.com</span>
+									<a class="type--fine-print" href="#">Privacy Policy</a>
+									<a class="type--fine-print" href="#">Github</a>
+							</div>
+					</div>
+					<!--end of row-->
+			</div>
+			<!--<div class="loader"></div>-->
+			<a class="back-to-top inner-link" href="#start" data-scroll-class="100vh:active">
+					<i class="stack-interface stack-up-open-big"></i>
 			</a>
-		</li>
-	</ul>
+			<script src="js/flickity.min.js"></script>
+			<script src="js/easypiechart.min.js"></script>
+			<script src="js/parallax.js"></script>
+			<script src="js/typed.min.js"></script>
+			<script src="js/datepicker.js"></script>
+			<script src="js/isotope.min.js"></script>
+			<script src="js/ytplayer.min.js"></script>
+			<script src="js/lightbox.min.js"></script>
+			<script src="js/granim.min.js"></script>
+			<script src="js/jquery.steps.min.js"></script>
+			<script src="js/countdown.min.js"></script>
+			<script src="js/twitterfetcher.min.js"></script>
+			<script src="js/spectragram.min.js"></script>
+			<script src="js/smooth-scroll.min.js"></script>
+			<script src="js/scripts.js"></script>
+			<!--end of container-->
+	</footer>
 </template>
-
-<template name="PrivateLayoutRightMenu">
-	<ul id="menu-items" class="nav navbar-nav navbar-right">
-		<li id="menu-item-simple" class="{{menuItemClass 'admin'}}">
-			<a href="{{pathFor 'admin'}}">
-				<span class="fa fa-wrench">
-				</span>
-				<span class="item-title">
-					&nbsp;Admin
-				</span>
-			</a>
-		</li>
-		<li id="menu-item-dropdown" class="dropdown ">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<span class="fa fa-cog">
-				</span>
-				<span class="item-title">
-					&nbsp;{{userEmail}}
-				</span>
-				<b class="caret">
-				</b>
-			</a>
-			<ul id="menu-items" class="dropdown-menu">
-				<li class="{{menuItemClass 'user_settings'}}">
-					<a href="{{pathFor 'user_settings'}}">
-						<span class="item-title">
-							Settings
-						</span>
-					</a>
-				</li>
-				<li class="{{menuItemClass 'logout'}}">
-					<a href="{{pathFor 'logout'}}">
-						<span class="item-title">
-							Logout
-						</span>
-					</a>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</template>
-

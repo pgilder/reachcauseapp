@@ -1,0 +1,23 @@
+.bg-ourwork {
+  background-image: url(img/education-5.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bg-ourwork-2 {
+  background-image: url(img/education-4.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bg-ourwork-3 {
+  background-image: url(img/inner-7.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.bg-btm-cta {
+  background-image: url(img/nonprofit-1.jpg);
+  background-size: cover;
+  background-position: bottom;
+}

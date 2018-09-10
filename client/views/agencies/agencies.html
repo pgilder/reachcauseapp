@@ -1,0 +1,159 @@
+<template name="Agencies">
+	<section class="elements-title space--xxs text-center">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12">
+	                <h6 class="type--uppercase">Manage Your Non Profits
+	                    <i class="stack-down-dir"></i>
+	                </h6>
+	            </div>
+	        </div>
+	        <!--end of row-->
+	    </div>
+	    <!--end of container-->
+	</section>
+
+	<section class=" ">
+	  <div class="container">
+	      <div class="row">
+								{{> AgenciesView}}
+	          <!--end masonry__container + row -->
+	      </div>
+	      <!--end masonry-->
+	  </div>
+	  <!--end of container-->
+	</section>
+</template>
+
+<template name="AgenciesView">
+	<div id="agencies-view" class="">
+		<div class="pos-right search-box bg--white border--bottom notification--reveal" data-animation="from-top" data-notification-link="search-box">
+		<form id="dataview-controls" class="form-inline">
+			<div id="dataview-controls-insert" class="form-group {{insertButtonClass}}">
+				<button type="submit" id="dataview-insert-button" class="btn btn-success">
+					<span class="fa fa-plus">
+					</span>
+					Add new
+				</button>
+			</div>
+			<div id="dataview-controls-search">
+				<div id="dataview-controls-search-group" class="input-group row justify-content-center">
+					<div class="col-lg-6 col-md-8">
+						<input type="text" class="test" id="dataview-search-input" placeholder="Type search query and hit enter" name="search" value="{{searchString}}" autofocus="autofocus">
+					</div>
+					<div class="col-lg-6 col-md-8">
+						<span class="input-group-btn">
+							<button type="button" id="dataview-search-button" class="btn btn-primary">
+								<span class="fa fa-search">
+								</span>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div style="padding-bottom: 20px;"></div>
+		{{#if isNotEmpty}}
+			{{#if isNotFound}}
+		<div class="alert alert-warning">
+			"{{searchString}}" not found.
+		</div>
+		{{else}}
+		<div id="dataview-data">
+			{{#if viewAsTable}} {{> AgenciesViewTable}} {{/if}}
+		</div>
+		{{/if}}
+		{{else}}
+		<div class="alert alert-info">
+			Empty.
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="AgenciesViewTable">
+	{{#each tableItems}} {{> AgenciesViewTableItems}} {{/each}}
+</template>
+
+<template name="AgenciesViewTableItems">
+	<div class="col-md-4 masonry__item">
+			<div class="card card-1 boxed boxed--sm boxed--border">
+					<div class="card__top">
+							<div class="card__avatar">
+									<a href="#">
+											<img alt="Image" src="img/avatar-round-1.png">
+									</a>
+									<span>
+											<strong>{{Agency_Name}}</strong>
+									</span>
+							</div>
+							<div class="card__meta">
+									<span>Pending</span>
+							</div>
+					</div>
+					<div class="card__body">
+							<a href="#">
+									<img src="img/inner-5.jpg" alt="Image" class="border--round">
+							</a>
+							<p>
+								{{Agency_Address_1}} {{Agency_Address_2}}<br>
+								{{Agency_City}}, {{Agency_State}} {{Agency_Zipcode}}<br>
+									<a href="{{Agency_URL}}">{{Agency_URL}}</a>
+							</p>
+					</div>
+					<div class="card__bottom">
+							<ul class="list-inline">
+									<!--<li class="list-inline-item">
+											<div class="card__action">
+													<a href="#">
+															<i class="material-icons">comment</i>
+															<span>10</span>
+													</a>
+											</div>
+									</li>-->
+									<li class="list-inline-item">
+											<div class="card__action">
+													<a href="#">
+															<span id="edit-button" class="fa fa-pencil {{editButtonClass}}" title="Edit">
+															</span>
+													</a>
+											</div>
+									</li>
+									<li class="list-inline-item">
+											<div class="card__action">
+													<a href="#">
+
+															<span id="delete-button" class="fa fa-trash-o {{deleteButtonClass}}" title="Delete">
+															</span>
+													</a>
+											</div>
+									</li>
+							</ul>
+					</div>
+			</div>
+	</div>
+</template>
+
+<template name="null">
+	<tr id="dataview-table-items-row">
+		{{Agency_Name}}
+		{{Agency_Address_1}}
+		{{Agency_Address_2}}
+		{{Agency_City}}
+		{{Agency_State}}
+		{{Agency_Zipcode}}
+		{{Agency_Phone}}
+		{{Agency_Fax}}
+		{{Agency_Email}}
+		{{Agency_URL}}
+		<td class="td-icon">
+			<span id="edit-button" class="fa fa-pencil {{editButtonClass}}" title="Edit">
+			</span>
+		</td>
+		<td class="td-icon">
+			<span id="delete-button" class="fa fa-trash-o {{deleteButtonClass}}" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>

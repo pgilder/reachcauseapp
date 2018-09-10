@@ -1,12 +1,58 @@
 <template name="HomePrivate">
-	<div class="page-container container" id="content">
-		<div class="row" id="title_row">
-			<div class="col-md-12">
-				<h2 id="page_title" class="pull-left">
-					Welcome {{userFullName}}!
-				</h2>
-			</div>
-		</div>
-	</div>
+	<!-- Ratio Checker Start -->
+	<section id="checker">
+		<h2 style="text-align:center;">Welcome {{userFullName}}!</h2>
+			<div class="container boxed bg--secondary boxed--lg boxed--border">
+				<div class="row">
+					<div class="col-md-6" data-tooltip="Set default here.">
+						<label>Set Starting Ratio</label>
+						<div class="input-select">
+								<select id="set-ratios" name="finish">
+										<option selected disabled value="">Set Ratio</option>
+										<option value="16:9">16:9</option>
+										<option value="4:3">4:3</option>
+										<option value="1:1">1:1</option>
+								</select>
+						</div>
+					</div>
+					<div class="col-md-6" data-tooltip="Set default orientation.">
+						<label>Set Orientation</label>
+						<div class="input-select">
+								<select id="set-orientation" name="orientation">
+										<option selected disabled value="">Set Orientation</option>
+										<option value="portrait">Portrait</option>
+										<option value="landscape">Landscape</option>
+								</select>
+						</div>
+					</div>
+					<div class="col-md-3" data-tooltip="Set your desired ratio here.">
+						<label>Aspect Ratio</label>
+						<input type=number value="4" id="a1">
+					</div>
+					<div class="col-md-3">
+						<label></label>
+						<input type=number value="3" id="a2">
+					</div>
+					<div class="col-md-3" data-tooltip="Resize ratio to desired width.">
+						<label>Resize to width:</label>
+						<input type=number value="400" id="size">
+					</div>
+					<div class="col-md-2" data-tooltip="Click to resize ratio.">
+						<button class="btn btn--sm btn--primary type--uppercase" id="resize">Resize</button>
+					</div>
+				</div>
+				<div class="row pad-top-30 margin-left-0">
+				 <div id="container"  class="ui-widget-content">
+						<div id="pic"><div id="text" data-tooltip="Your Resized ratio specs, drag the corner to resize."></div>
+							<div class="grab-icon"></div>
+						</div>
+				 </div>
+			 </div>
+		 </div>
+	 </section>
+	 <!-- Ratio Checker End -->
 </template>
 
+<template name="customer_detail">
+
+</template>

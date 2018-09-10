@@ -1,0 +1,132 @@
+<template name="AgenciesDetails">
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+			</div>
+		</div>
+		{{> AgenciesDetailsForm}}
+	</div>
+</template>
+
+<template name="AgenciesDetailsForm">
+	<div id="agencies-details-form" class="">
+		<h2 id="component-title">
+			<a href="#" id="form-back-button" class="btn btn-default" title="back">
+				<span class="fa fa-chevron-left">
+				</span>
+			</a>
+			Agency Details
+		</h2>
+		<form role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-agency_name">
+				<label for="Agency_Name">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_name">
+						{{agency.Agency_Name}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_address_1">
+				<label for="Agency_Address_1">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_address_1">
+						{{agency.Agency_Address_1}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_address_2">
+				<label for="Agency_Address_2">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_address_2">
+						{{agency.Agency_Address_2}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_city">
+				<label for="Agency_City">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_city">
+						{{agency.Agency_City}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_state">
+				<label for="Agency_State">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_state">
+						{{agency.Agency_State}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_zipcode">
+				<label for="Agency_Zipcode">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_zipcode">
+						{{agency.Agency_Zipcode}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_phone">
+				<label for="Agency_Phone">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_phone">
+						{{agency.Agency_Phone}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_fax">
+				<label for="Agency_Fax">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_fax">
+						{{agency.Agency_Fax}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_email">
+				<label for="Agency_Email">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_email">
+						{{agency.Agency_Email}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group  field-agency_url">
+				<label for="Agency_URL">
+				</label>
+				<div class="input-div">
+					<p class="form-control-static  control-field-agency_url">
+						{{agency.Agency_URL}}
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="submit-div">
+					<a href="#" id="form-close-button" class="btn btn-primary">
+						OK
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+

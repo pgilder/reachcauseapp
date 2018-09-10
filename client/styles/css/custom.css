@@ -1,0 +1,9 @@
+/*! Place your custom styles here */
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    position: absolute;
+    margin-left: 55px !important;
+    margin-top: 4px;
+    width: 35px;
+    border-radius: 60px;
+    margin-top: -9px;
+}

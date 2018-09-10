@@ -1,34 +1,54 @@
 <template name="Login">
-	<div class="container">
-		<form id="login_form" class="account-form" role="form">
-			<h2>
-				Please sign in
-			</h2>
-			{{#if errorMessage}}
-			<div class="alert alert-warning">
-				{{errorMessage}}
-			</div>
-			{{/if}}
-			<div id="login-with-password" style="padding-top: 10px;">
-				<input id="login_email" type="text" class="form-control" placeholder="Email address" required autofocus>
-				<input id="login_password" type="password" class="form-control" placeholder="Password" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">
-					Sign in
-				</button>
-				<p class="account-form-text-after" id="register-link">
-					Not a member?
-					<a href="{{pathFor 'register'}}">
-						Sign up here
-					</a>
-				</p>
-				<p class="account-form-text-after" id="forgot-password-link">
-					Forgot password?
-					<a href="{{pathFor 'forgot_password'}}">
-						Click here
-					</a>
-				</p>
-			</div>
-		</form>
+<!--	{{> clearnav}} -->
+	<div class="main-container">
+			<section class="height-100 imagebg text-center bg-login" data-overlay="9">
+					<div class="background-image-holder"></div>
+					<div class="container pos-vertical-center">
+							<div class="row">
+									<div class="col-md-7 col-lg-5">
+											<h2>Login to continue</h2>
+											<a class="btn block btn--icon bg--facebook type--uppercase" href="#"> <span class="btn__text">
+													<i class="socicon-facebook"></i>
+													Login with Facebook
+											</span> </a>
+															<a class="btn block btn--icon bg--twitter type--uppercase" href="#"> <span class="btn__text">
+													<i class="socicon-twitter"></i>
+													Login with Twitter
+											</span> </a>
+											<hr>
+											<p>Login using your Stack account</p>
+
+											<form id="login_form" role="form">
+													<div id="login-with-password" class="row">
+														{{#if errorMessage}}
+															{{errorMessage}}
+														{{/if}}
+															<div class="col-md-12">
+																<input id="login_email" type="text" placeholder="Email address" required autofocus>
+															</div>
+															<div class="col-md-12">
+																<input id="login_password" type="password" placeholder="Password" required>
+															</div>
+															<div class="col-md-12">
+																<button class="btn btn--primary type--uppercase" type="submit" data-loading-text="Please wait...">Sign in</button>
+															</div>
+													</div>
+											</form>
+											<span class="account-form-text-after type--fine-print block" id="register-link">
+												Not a member?
+												<a href="{{pathFor 'register'}}">
+													Sign up here
+												</a>
+											</span>
+											<span class="account-form-text-after type--fine-print block" id="forgot-password-link">
+												Forgot password?
+												<a href="{{pathFor 'forgot_password'}}">
+													Click here
+												</a>
+											</span>
+									</div>
+							</div>
+					</div>
+			</section>
 	</div>
 </template>
-
