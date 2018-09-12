@@ -3,6 +3,15 @@ var verifyEmail = false;
 Accounts.config({ sendVerificationEmail: verifyEmail });
 
 Meteor.startup(function() {
+	//
+	if(!Meteor.users.find().count()) {
+    var options = {
+      username: 'pgilder', 
+      password: 'p3620g007',
+      email: 'pgilder@designdelegate.co'
+    };
+    Accounts.createUser(options);
+  }
 	// read environment variables from Meteor.settings
 	if(Meteor.settings && Meteor.settings.env && _.isObject(Meteor.settings.env)) {
 		for(var variableName in Meteor.settings.env) {
@@ -109,7 +118,7 @@ Meteor.startup(function() {
 		}
 	}
 
-	
+
 });
 
 Meteor.methods({
@@ -292,7 +301,7 @@ Users.before.update(function(userId, doc, fieldNames, modifier, options) {
 });
 
 Accounts.onLogin(function (info) {
-	
+
 });
 
 Accounts.urls.resetPassword = function (token) {

@@ -35,6 +35,5 @@ reactive-dict@1.2.0
 mizzao:bootboxjs
 momentjs:moment
 rajit:bootstrap3-datepicker
-nilsdannemann:pdfmake
 underscore
 babel-runtime
